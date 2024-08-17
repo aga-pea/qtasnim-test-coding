@@ -12,7 +12,7 @@ class TransaksiController extends Controller
     // Read: Menampilkan semua transaksi
     public function index()
     {
-        $transaksi = Transaksi::with(['barang', 'jenisBarang'])->get();
+        $transaksi = Transaksi::with(['barang', 'jenisBarang'])->sortable()->paginate(0);
         return view('transaksi.index', compact('transaksi'));
     }
 
@@ -76,5 +76,17 @@ class TransaksiController extends Controller
 
         return redirect()->route('transaksi.index')
                          ->with('success', 'Transaksi berhasil dihapus');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search', '');
+
+        $transaksis = Transaksi::whereHas('barang', function($q) use ($search) {
+            $q->where('nama_barang', 'like', '%' . $search . '%');
+        })->orWhere('tanggal_transaksi', 'like', '%' . $search . '%')
+          ->paginate(10);
+
+        return view('transaksi.search', compact('transaksis', 'search'));
     }
 }

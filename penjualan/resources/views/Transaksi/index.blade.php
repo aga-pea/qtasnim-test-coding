@@ -6,15 +6,16 @@
         <h1>Daftar Transaksi</h1>
         <hr>
         <div class="table-responsive">
-            <table class="table table-striped custom-table">
+            <table class="table table-striped custom-table" id="myTable">
                 <thead>
                     <tr>
-                        <th scope="col">Nama Barang</th>
-                        <th scope="col" class="center-else">Jenis Barang</th>
-                        <th scope="col" class="center-else">Stok</th>
-                        <th scope="col" class="center-else">Jumlah Terjual</th>
-                        <th scope="col" class="center-else">Tanggal Transaksi</th>
-                        <th scope="col" class="center-else">Aksi</th>
+                        <th scope="col">@sortablelink('barang.nama_barang', 'Nama Barang')</th>
+                        <th scope="col" class="center-else">@sortablelink('jenisBarang.nama', 'Jenis Barang')</th>
+                        <th scope="col" class="center-else">@sortablelink('stok', 'Stok')</th>
+                        <th scope="col" class="center-else">@sortablelink('jumlah_terjual', 'Jumlah Terjual')</th>
+                        <th scope="col" class="center-else">@sortablelink('tanggal_transaksi', 'Tanggal Transaksi')</th>
+                        <th scope="col" class="center-else" >Aksi</th>
+
                     </tr>
                 </thead>
                 <tbody>
