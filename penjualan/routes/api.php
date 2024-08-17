@@ -26,7 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('transaksis')->group(function () {
     Route::get('/', [TransaksiController::class, 'index']);
     Route::post('/', [TransaksiController::class, 'store']);
-    Route::get('{id}', [TransaksiController::class, 'show']);
     Route::put('{id}', [TransaksiController::class, 'update']);
     Route::delete('{id}', [TransaksiController::class, 'destroy']);
 });
@@ -35,7 +34,6 @@ Route::prefix('transaksis')->group(function () {
 Route::prefix('barangs')->group(function () {
     Route::get('/', [BarangController::class, 'index']);
     Route::post('/', [BarangController::class, 'store']);
-    Route::get('{id}', [BarangController::class, 'show']);
     Route::put('{id}', [BarangController::class, 'update']);
     Route::delete('{id}', [BarangController::class, 'destroy']);
 });
@@ -44,7 +42,6 @@ Route::prefix('barangs')->group(function () {
 Route::prefix('jenis-barangs')->group(function () {
     Route::get('/', [JenisBarangController::class, 'index']);
     Route::post('/', [JenisBarangController::class, 'store']);
-    Route::get('{id}', [JenisBarangController::class, 'show']);
     Route::put('{id}', [JenisBarangController::class, 'update']);
     Route::delete('{id}', [JenisBarangController::class, 'destroy']);
 });

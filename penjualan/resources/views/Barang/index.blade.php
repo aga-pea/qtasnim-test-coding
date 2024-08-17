@@ -19,7 +19,7 @@
                         <tr>
                             <td>{{ $item->nama_barang }}</td>
                             <td class="center-else">
-                                <a href="{{ route('barang.edit', $item->id) }}" class="btn">Edit</a>
+                                <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-primary" style="color:#fff;">Edit</a>
                                 <form action="{{ route('barang.destroy', $item->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')

@@ -78,14 +78,34 @@ class TransaksiController extends Controller
                          ->with('success', 'Transaksi berhasil dihapus');
     }
 
+    public function filterByDate(Request $request)
+    {
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+
+        $query = Transaksi::with(['barang', 'jenisBarang']);
+
+        if ($startDate && $endDate) {
+            $query->whereBetween('tanggal_transaksi', [$startDate, $endDate]);
+        }
+
+        $transaksis = $query->sortable()->paginate(0);
+
+        return view('transaksi.filter', [
+            'transaksis' => $transaksis,
+            'start_date' => $startDate,
+            'end_date' => $endDate,
+        ]);
+    }
+
     public function search(Request $request)
     {
-        $search = $request->input('search', '');
+        $search = $request->input('search');
 
         $transaksis = Transaksi::whereHas('barang', function($q) use ($search) {
             $q->where('nama_barang', 'like', '%' . $search . '%');
         })->orWhere('tanggal_transaksi', 'like', '%' . $search . '%')
-          ->paginate(10);
+          ->paginate(0);
 
         return view('transaksi.search', compact('transaksis', 'search'));
     }

@@ -21,8 +21,9 @@ use App\Http\Controllers\JenisBarangController;
 
 Route::get('/', [Controller::class, 'index'])->name('index');
 
-Route::resource('transaksi', TransaksiController::class);
+Route::resource('transaksi', TransaksiController::class)->except(['show']);
 Route::resource('barang', BarangController::class);
 Route::resource('jenis_barang', JenisBarangController::class);
 
 Route::get('/transaksi/search', [TransaksiController::class, 'search'])->name('transaksi.search');
+Route::get('/transaksi/filter', [TransaksiController::class, 'filterByDate'])->name('transaksi.filterByDate');

@@ -20,7 +20,7 @@
                             <td>{{ $jenisBarang->id }}</td>
                             <td>{{ $jenisBarang->jenis_barang }}</td>
                             <td>
-                                <a href="{{ route('jenis_barang.edit', $jenisBarang->id) }}" class="btn">Edit</a>
+                                <a href="{{ route('jenis_barang.edit', $jenisBarang->id) }}" class="btn btn-primary" style="color:#fff;">Edit</a>
                                 <form action="{{ route('jenis_barang.destroy', $jenisBarang->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
