@@ -1,36 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'My Application')</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @stack('styles') <!-- For additional styles -->
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ url('/') }}">My Application</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Transaksi</a>
-                    </li>
-                    <!-- Add more links as needed -->
-                </ul>
-            </div>
-        </nav>
-    </header>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@yield('title', 'Data Penjualan')</title>
 
-    <main role="main" class="container mt-4">
+    <link href="{{ asset('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap') }}" rel="stylesheet">
+
+    <link href="{{ asset('assets/fonts/icomoon/style.css?v=').time() }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/owl.carousel.min.css?v=').time() }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap.min.css?v=').time() }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css?v=').time() }}" rel="stylesheet">
+    @stack('styles')
+    
+  </head>
+  <body>
+  
+
+  <div class="content">
+  <main role="main">
         @yield('content') <!-- This is where the content of individual views will be injected -->
     </main>
+  </div>
+    
+    
 
-    <footer class="bg-light text-center py-3 mt-4">
-        <p>&copy; {{ date('Y') }} My Application. All rights reserved.</p>
-    </footer>
-
-    @stack('scripts') <!-- For additional scripts -->
-</body>
+    <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/main.js') }}" defer></script>
+    @stack('scripts')
+  </body>
 </html>
